@@ -1,3 +1,6 @@
+// AED1 - Algoritmo e Estrutura de Dados
+// Fatorial recursivo
+
 #include <stdio.h>
  
 int fib(int a);
