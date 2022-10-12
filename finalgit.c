@@ -1,3 +1,6 @@
+// Trabalho Final - IP (Introdução à Progrmação)
+// Jogo do milhão
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
