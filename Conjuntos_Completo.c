@@ -1,3 +1,6 @@
+// AED1 - Trabalho de Algoritmo e Estrutura de Dados
+// TAD - Tipo Abstrato de Dados - Conjunto (definição matemática)
+
 //==============================================================================
 // Arquivo ponto.h
 //==============================================================================
