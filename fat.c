@@ -33,4 +33,3 @@ int fib(int a){
         return soma;    
     }
 }
-×
