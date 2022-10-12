@@ -1,3 +1,6 @@
+// Exercício de Algoritmo e Estrutura de Dados
+// Implementação de um modelo de agenda telefônica usando o conceito de lista simplesmente encadeada
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,19 +33,15 @@ void RegistraLigacao(lista *sequencia, char r_nome[]);
 void RemoveElemento(lista *sequencia, char del_nome[]);
 void ImprimeLista(lista *sequencia);
 void ExcluiLista(lista *sequencia);
-//  void inicia(lista *sequencia);
  
 int main()
 {
     lista *agenda = (lista *)malloc(sizeof(lista));
- 
- 
     char caractere;
     char nome[20];
     char numero[10];
     int qtd_ligacoes;
  
-    // printf("*********\n");
     CriaLista(agenda);
  
     while (1)
@@ -50,53 +49,37 @@ int main()
         scanf("%c", &caractere);
         if (caractere == 'F')
         {
-            // printf("*********\n");
             break;
         }
  
         if (caractere == 'I')
         {
-            // printf("*********\n");
             scanf("%s", nome);
             scanf("%s", numero);
             scanf("%d", &qtd_ligacoes);
             InsereElemento(agenda, nome, numero, qtd_ligacoes);
-            //ImprimeLista(agenda);
             agenda = OrdenaLista(agenda);
-            // ImprimeLista(agenda);
-            // printf("\n");
         }
         if (caractere == 'L')
         {
-            // printf("*********\n");
             scanf("%s", nome);
             RegistraLigacao(agenda, nome);
             agenda = OrdenaLista(agenda);
-            // ImprimeLista(agenda);
-            // printf("\n");
         }
         if (caractere == 'R')
         {
-            // printf("*********\n");
             scanf("%s", nome);
             RemoveElemento(agenda, nome);
             agenda = OrdenaLista(agenda);
-            // ImprimeLista(agenda);
-            // printf("\n");
         }
-        // printf("tamlist = %d\n", TamanhoLista(agenda));
     }
  
-    // printf("%s\n", NomeMaiorElemento(&agenda));
     ImprimeLista(agenda);
     ExcluiLista(agenda);
  
     return 0;
 }
  
-// void inicia(lista *sequencia){
-//     sequencia->inicio=NULL;
-// }
 bool CriaListaVazia(lista *clone)
 {
     clone->inicio = NULL;
@@ -210,7 +193,6 @@ char *NomeMaiorElemento(lista *sequencia)
     menor = sequencia->inicio;
     while (percorre != NULL)
     {
-        // printf("%d %d\n", percorre->liga_struct, menor->liga_struct);
         if (percorre->liga_struct > menor->liga_struct)
         {
             menor = percorre;
@@ -237,14 +219,11 @@ lista *OrdenaLista(lista *sequencia)
  
         percorre = sequencia->inicio;
         strcpy(menor_nome, NomeMaiorElemento(sequencia));
-        // printf("menor eh %s\n", menor_nome);
  
         if (strcmp(percorre->nome_struct, menor_nome) == 0)
         {
-            // printf("estou aqui\n");
             InsereElemento(clone, percorre->nome_struct, percorre->num_struct, percorre->liga_struct);
             RemoveElemento(sequencia, percorre->nome_struct);
-            // printf("removi e agora tamlist=%d\n", TamanhoLista(sequencia));
         }
         else
         {
@@ -255,7 +234,6 @@ lista *OrdenaLista(lista *sequencia)
             }
             InsereElemento(clone, percorre->nome_struct, percorre->num_struct, percorre->liga_struct);
             RemoveElemento(sequencia, percorre->nome_struct);
-            // printf("removi e agora tamlist=%d\n", TamanhoLista(sequencia));
         }
     }
     return clone;
@@ -347,39 +325,3 @@ void ExcluiLista(lista *sequencia)
         RemoveElemento(sequencia, percorre->nome_struct);
     }
 }
- 
-// lista* OrdenaLista(lista *sequencia)
-// {
-//     no *maior;
-//     no *percorre;
-//     no *aux;
- 
-//     while(sequencia->inicio!=NULL)
-//     {
-//         percorre = sequencia->inicio;
-//         maior = sequencia->inicio;
- 
-//         while(percorre->proximo!=NULL)
-//         {
-//             aux = percorre;
-//             percorre = percorre->proximo;
-//             if(aux->liga_struct>percorre->liga_struct)
-//             {
-//                 maior = aux;
-//             }
-//         }
-//         if(maior==sequencia->inicio)
-//         {
-//             sequencia->inicio = maior->proximo;
-//             InsereElemento(copia, maior->nome_struct, maior->num_struct, maior->liga_struct);
-//             RemoveElemento(sequencia, maior->nome_struct);
-//         }
-//         else
-//         {
-//             InsereElemento(copia, maior->nome_struct, maior->num_struct, maior->liga_struct);
-//             aux = percorre->proximo;
-//             RemoveElemento(sequencia, percorre->nome_struct);
-//         }
-//     }
-//     return copia;
-// }
